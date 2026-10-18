@@ -65,15 +65,15 @@ Use the same high-resolution reference image, low-resolution observation, downsa
 - **Inputs:** Two same-shaped noise tensors, `z1` and `z2`, initialized independently.
 - **Training:** Train the shared U-Net using both inputs against the same low-resolution observation. A possible objective is:
 
-  $$
+  $
   \mathcal{L}_{\mathrm{data}} = \frac{1}{2}\left[\left\|D(G_\theta(z_1))-y_{\mathrm{LR}}\right\|_2^2 + \left\|D(G_\theta(z_2))-y_{\mathrm{LR}}\right\|_2^2\right]
-  $$
+  $
 
   If output consistency is part of the intended experiment, add:
 
-  $$
+  $
   \mathcal{L}_{\mathrm{consistency}} = \lambda_c\left\|G_\theta(z_1)-G_\theta(z_2)\right\|_1
-  $$
+  $
 
   Report `lambda_c`. If consistency is not being tested, set it to zero.
 
