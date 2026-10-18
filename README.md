@@ -50,7 +50,7 @@ Use the same high-resolution reference image, low-resolution observation, downsa
 - **Input:** One fixed noise tensor, `z`.
 - **Loss:** L1 error between the downsampled reconstruction and observed low-resolution image:
 
-  $\mathcal{L}_{\mathrm{data}} = \left\|D(G_\theta(z))-y_{\mathrm{LR}}\right\|_1$
+  $ \mathcal{L}_{\mathrm{data}} = \left\|D(G_\theta(z))-y_{\mathrm{LR}}\right\|_1 $
 
 - **Training:** Change the data-consistency loss from MSE to L1. Keep other settings unchanged where possible.
 
@@ -73,7 +73,7 @@ Use the same high-resolution reference image, low-resolution observation, downsa
 
 - **Interpolation after training:** Freeze the trained U-Net weights and linearly interpolate the inputs:
 
-  $z_\alpha=(1-\alpha)z_1+\alpha z_2,\qquad \alpha\in[0,1]$
+  $ z_\alpha=(1-\alpha)z_1+\alpha z_2,\qquad \alpha\in[0,1] $
 
   Evaluate the same network at values such as 0.0, 0.1, ..., 1.0. Visualize the outputs and measure PSNR and SSIM against the HR reference when ground truth is available.
 
@@ -96,7 +96,7 @@ Use the radius values:
 
 Let `z` be the original input tensor used by the relevant model, and let `epsilon_r` be the additional random noise sampled for radius `r`. The supplied code generates a fresh perturbation for each radius, so the input is:
 
-$z_r = z + r\epsilon_r$
+$ z_r = z + r\epsilon_r $
 
 For every model in Experiments 1–4, preserve the base input once before the loop (for example, `base_input = net_input.detach().clone()`). For each radius, generate `radius_noise` with the same shape as `base_input`, construct `base_input + radius * radius_noise`, and pass it to the frozen model. Do not overwrite the base input inside the loop.
 
